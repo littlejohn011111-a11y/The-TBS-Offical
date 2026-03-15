@@ -3,7 +3,7 @@
 
 <head>
 
-<title>TBS Clan | Official Website</title>
+<title>The Branch Sprinters | TBS</title>
 <link rel="icon" type="image/png" href="TBS Profile.png">
 
 <style>
@@ -11,54 +11,81 @@
 body{
 margin:0;
 font-family:Arial;
-background:radial-gradient(circle at top,#0a0a0a,#020202);
+background:linear-gradient(180deg,#050505,#000000);
 color:white;
 text-align:center;
+overflow-x:hidden;
+}
+
+/* animated background */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#0088ff22 1px,transparent 1px);
+background-size:60px 60px;
+animation:movebg 20s linear infinite;
+z-index:-1;
+}
+
+@keyframes movebg{
+0%{transform:translateY(0);}
+100%{transform:translateY(60px);}
 }
 
 header{
-padding:40px;
+padding:50px;
 background:#050505;
 box-shadow:0 0 40px #0088ff55;
 }
 
 .logo{
 width:280px;
-filter:drop-shadow(0 0 15px #0088ff);
+filter:drop-shadow(0 0 20px #0088ff);
 }
 
 h1{
-margin-top:10px;
-font-size:40px;
-letter-spacing:3px;
+margin-top:15px;
+font-size:45px;
+letter-spacing:4px;
 color:#00aaff;
 }
 
+.subtitle{
+color:#999;
+margin-top:-10px;
+}
+
 nav{
-margin-top:25px;
+margin-top:30px;
 }
 
 nav button{
 background:transparent;
 border:2px solid #00aaff;
 color:#00aaff;
-padding:10px 25px;
+padding:12px 28px;
 margin:10px;
 font-size:18px;
 cursor:pointer;
-border-radius:6px;
+border-radius:8px;
 transition:0.3s;
 }
 
 nav button:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 15px #00aaff;
+box-shadow:0 0 20px #00aaff;
+transform:scale(1.05);
 }
 
 .page{
 display:none;
-padding:50px;
+padding:60px;
 }
 
 .active{
@@ -66,58 +93,81 @@ display:block;
 }
 
 .sectiontitle{
-font-size:28px;
-margin-bottom:25px;
+font-size:32px;
+margin-bottom:30px;
 color:#00aaff;
+}
+
+.aboutbox{
+max-width:800px;
+margin:auto;
+background:#0d0d0d;
+padding:40px;
+border-radius:12px;
+box-shadow:0 0 25px #0088ff33;
+line-height:1.7;
 }
 
 .card{
 background:#0d0d0d;
-margin:12px auto;
-padding:18px;
-width:320px;
-border-radius:10px;
+margin:15px auto;
+padding:20px;
+width:340px;
+border-radius:12px;
 border:1px solid #0088ff44;
 box-shadow:0 0 12px #0088ff33;
 transition:0.3s;
 cursor:pointer;
+font-size:18px;
 }
 
 .card:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #0088ff;
+transform:scale(1.07);
+box-shadow:0 0 30px #0088ff;
 }
 
 .rank{
 font-size:14px;
 color:#00aaff;
-margin-bottom:5px;
+margin-bottom:6px;
 }
 
 .joinbtn{
 background:#0088ff;
 border:none;
-padding:15px 40px;
+padding:18px 45px;
 font-size:20px;
 color:white;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
 transition:0.3s;
 }
 
 .joinbtn:hover{
 background:#00aaff;
-box-shadow:0 0 20px #00aaff;
-transform:scale(1.08);
+box-shadow:0 0 25px #00aaff;
+transform:scale(1.1);
 }
 
-.aboutbox{
-max-width:600px;
-margin:auto;
+.socialbtn{
+display:block;
+width:300px;
+margin:20px auto;
+padding:18px;
 background:#0d0d0d;
-padding:30px;
+border:2px solid #00aaff;
 border-radius:10px;
-box-shadow:0 0 20px #0088ff33;
+color:#00aaff;
+font-size:20px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.socialbtn:hover{
+background:#00aaff;
+color:black;
+box-shadow:0 0 25px #00aaff;
+transform:scale(1.05);
 }
 
 /* popup */
@@ -128,7 +178,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 display:none;
 justify-content:center;
 align-items:center;
@@ -136,20 +186,20 @@ align-items:center;
 
 .popup-content{
 background:#0d0d0d;
-padding:30px;
-border-radius:10px;
-width:350px;
-box-shadow:0 0 25px #0088ff;
+padding:35px;
+border-radius:12px;
+width:360px;
+box-shadow:0 0 35px #0088ff;
 }
 
 .close{
 margin-top:20px;
-padding:10px 20px;
+padding:12px 25px;
 background:#0088ff;
 border:none;
 color:white;
 cursor:pointer;
-border-radius:6px;
+border-radius:8px;
 }
 
 </style>
@@ -168,7 +218,7 @@ document.getElementById(id).classList.add("active");
 
 }
 
-function openProfile(name, text){
+function openProfile(name,text){
 
 document.getElementById("popup-name").innerText=name;
 document.getElementById("popup-text").innerText=text;
@@ -191,11 +241,13 @@ document.getElementById("profile-popup").style.display="none";
 
 <img src="TBS Profile.png" class="logo">
 
-<h1>TBS CLAN</h1>
+<h1>THE BRANCH SPRINTERS</h1>
+<p class="subtitle">AKA TBS</p>
 
 <nav>
 <button onclick="showPage('about')">ABOUT</button>
 <button onclick="showPage('members')">MEMBERS</button>
+<button onclick="showPage('socials')">SOCIAL MEDIA</button>
 <button onclick="showPage('join')">JOIN</button>
 </nav>
 
@@ -204,16 +256,28 @@ document.getElementById("profile-popup").style.display="none";
 
 <div id="about" class="page active">
 
-<h2 class="sectiontitle">About Us</h2>
+<h2 class="sectiontitle">About The Clan</h2>
 
 <div class="aboutbox">
+
 <p>
-This is an Pro Gorilla Tag Clan! Where you can have a lot of Fun and meet new Friends!
-<br><br>
-We do Training every weekend!
-<br><br>
-Join Now!
+
+The Branch Sprinters (TBS) is a competitive Gorilla Tag clan built for players who love speed, skill and teamwork.
+
+Inside Gorilla Tag, movement is everything. From insane wall climbs to fast branch jukes and intense chases through the forest, the best players dominate with movement and strategy.
+
+TBS trains to master these mechanics and push our members to the next level.
+
+Every weekend we host training sessions where members practice movement, routes, tagging strategies and teamwork.
+
+But TBS is more than just skill — it's a community where players can meet new friends, have fun and grow together.
+
+If you love Gorilla Tag and want to become faster, smarter and stronger, then The Branch Sprinters is the place for you.
+
+Join the team and become part of the sprint.
+
 </p>
+
 </div>
 
 </div>
@@ -224,34 +288,48 @@ Join Now!
 
 <h2 class="sectiontitle">Main Founder</h2>
 
-<div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS.')">
+<div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS. The one who created The Branch Sprinters.')">
 <div class="rank">MAIN FOUNDER</div>
 Z3RO
 </div>
 
-
 <h2 class="sectiontitle">Founders</h2>
 
-<div class="card" onclick="openProfile('Inferno','The Other 2 Founders, The Best ones on Earth!')">
+<div class="card" onclick="openProfile('Inferno','One of the legendary founders of TBS. A core pillar of The Branch Sprinters.')">
 <div class="rank">FOUNDER</div>
 Inferno
 </div>
 
-<div class="card" onclick="openProfile('Paul','The Other 2 Founders, The Best ones on Earth!')">
+<div class="card" onclick="openProfile('Paul','One of the legendary founders of TBS. A core pillar of The Branch Sprinters.')">
 <div class="rank">FOUNDER</div>
 Paul
 </div>
 
+<h2 class="sectiontitle">Elite Members</h2>
 
-<h2 class="sectiontitle">Members</h2>
+<div class="card" onclick="openProfile('WaWa','An elite member of The Branch Sprinters.')">WaWa</div>
+<div class="card" onclick="openProfile('Mason','An elite member of The Branch Sprinters.')">Mason</div>
+<div class="card" onclick="openProfile('Mitzi','An elite member of The Branch Sprinters.')">Mitzi</div>
+<div class="card" onclick="openProfile('Ninja','An elite member of The Branch Sprinters.')">Ninja</div>
+<div class="card" onclick="openProfile('Zyphor','An elite member of The Branch Sprinters.')">Zyphor</div>
+<div class="card" onclick="openProfile('Matty','An elite member of The Branch Sprinters.')">Matty</div>
+<div class="card" onclick="openProfile('Purple','An elite member of The Branch Sprinters.')">Purple</div>
 
-<div class="card" onclick="openProfile('WaWa','The Best members on Earth!')">WaWa</div>
-<div class="card" onclick="openProfile('Mason','The Best members on Earth!')">Mason</div>
-<div class="card" onclick="openProfile('Mitzi','The Best members on Earth!')">Mitzi</div>
-<div class="card" onclick="openProfile('Ninja','The Best members on Earth!')">Ninja</div>
-<div class="card" onclick="openProfile('Zyphor','The Best members on Earth!')">Zyphor</div>
-<div class="card" onclick="openProfile('Matty','The Best members on Earth!')">Matty</div>
-<div class="card" onclick="openProfile('Purple','The Best members on Earth!')">Purple</div>
+</div>
+
+
+
+<div id="socials" class="page">
+
+<h2 class="sectiontitle">TBS Social Media</h2>
+
+<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter?_r=1&_t=ZG-94iVKgl38G9" target="_blank">
+TikTok
+</a>
+
+<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">
+YouTube
+</a>
 
 </div>
 
@@ -259,9 +337,9 @@ Paul
 
 <div id="join" class="page">
 
-<h2 class="sectiontitle">Join The Clan</h2>
+<h2 class="sectiontitle">Join The Branch Sprinters</h2>
 
-<p>Become part of the TBS Gorilla Tag team.</p>
+<p>Ready to sprint with the best Gorilla Tag players?</p>
 
 <br>
 
@@ -278,7 +356,6 @@ Paul
 <div class="popup-content">
 
 <h2 id="popup-name"></h2>
-
 <p id="popup-text"></p>
 
 <button class="close" onclick="closePopup()">Close</button>
@@ -286,7 +363,6 @@ Paul
 </div>
 
 </div>
-
 
 </body>
 </html>
