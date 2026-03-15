@@ -11,54 +11,59 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(180deg,#050505,#000000);
+background:#010101;
 color:white;
 text-align:center;
 overflow-x:hidden;
 }
 
-/* animated background */
+/* particle canvas */
 
-body::before{
-content:"";
+canvas{
 position:fixed;
 top:0;
 left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#0088ff22 1px,transparent 1px);
-background-size:60px 60px;
-animation:movebg 20s linear infinite;
 z-index:-1;
 }
 
-@keyframes movebg{
-0%{transform:translateY(0);}
-100%{transform:translateY(60px);}
-}
+/* header */
 
 header{
-padding:50px;
+padding:60px;
 background:#050505;
-box-shadow:0 0 40px #0088ff55;
+box-shadow:0 0 60px #0088ff55;
 }
 
 .logo{
-width:280px;
-filter:drop-shadow(0 0 20px #0088ff);
+width:260px;
+filter:drop-shadow(0 0 30px #00aaff);
+animation:logoGlow 3s infinite alternate;
+}
+
+@keyframes logoGlow{
+from{filter:drop-shadow(0 0 15px #00aaff);}
+to{filter:drop-shadow(0 0 40px #00aaff);}
 }
 
 h1{
-margin-top:15px;
-font-size:45px;
-letter-spacing:4px;
+font-size:50px;
 color:#00aaff;
+letter-spacing:5px;
+margin:10px;
+animation:glowText 2s infinite alternate;
+}
+
+@keyframes glowText{
+from{text-shadow:0 0 10px #00aaff;}
+to{text-shadow:0 0 30px #00aaff;}
 }
 
 .subtitle{
-color:#999;
-margin-top:-10px;
+color:#aaa;
+font-size:18px;
 }
+
+/* navigation */
 
 nav{
 margin-top:30px;
@@ -68,92 +73,133 @@ nav button{
 background:transparent;
 border:2px solid #00aaff;
 color:#00aaff;
-padding:12px 28px;
+padding:12px 30px;
 margin:10px;
 font-size:18px;
 cursor:pointer;
-border-radius:8px;
+border-radius:10px;
 transition:0.3s;
 }
 
 nav button:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 20px #00aaff;
-transform:scale(1.05);
+box-shadow:0 0 25px #00aaff;
+transform:scale(1.1);
 }
+
+/* pages */
 
 .page{
 display:none;
-padding:60px;
+padding:70px;
+animation:fade 0.5s;
 }
 
 .active{
 display:block;
 }
 
-.sectiontitle{
-font-size:32px;
-margin-bottom:30px;
-color:#00aaff;
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
-.aboutbox{
+.sectiontitle{
+font-size:36px;
+color:#00aaff;
+margin-bottom:30px;
+}
+
+/* hero */
+
+.hero{
 max-width:800px;
 margin:auto;
-background:#0d0d0d;
+background:#0b0b0b;
 padding:40px;
-border-radius:12px;
+border-radius:15px;
 box-shadow:0 0 25px #0088ff33;
 line-height:1.7;
 }
 
+/* stats */
+
+.stats{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+margin-top:40px;
+}
+
+.statbox{
+background:#0d0d0d;
+padding:30px;
+width:200px;
+border-radius:12px;
+box-shadow:0 0 20px #0088ff33;
+transition:0.3s;
+}
+
+.statbox:hover{
+transform:scale(1.1);
+box-shadow:0 0 35px #0088ff;
+}
+
+.statnumber{
+font-size:40px;
+color:#00aaff;
+}
+
+/* member cards */
+
 .card{
 background:#0d0d0d;
 margin:15px auto;
-padding:20px;
+padding:22px;
 width:340px;
 border-radius:12px;
-border:1px solid #0088ff44;
-box-shadow:0 0 12px #0088ff33;
+border:1px solid #0088ff33;
+box-shadow:0 0 15px #0088ff33;
 transition:0.3s;
 cursor:pointer;
-font-size:18px;
 }
 
 .card:hover{
-transform:scale(1.07);
-box-shadow:0 0 30px #0088ff;
+transform:scale(1.1);
+box-shadow:0 0 40px #00aaff;
 }
 
 .rank{
-font-size:14px;
 color:#00aaff;
-margin-bottom:6px;
+font-size:14px;
 }
 
-.joinbtn{
-background:#0088ff;
-border:none;
-padding:18px 45px;
-font-size:20px;
-color:white;
-border-radius:10px;
-cursor:pointer;
-transition:0.3s;
+/* rules */
+
+.rules{
+max-width:900px;
+margin:auto;
+text-align:left;
+background:#0b0b0b;
+padding:40px;
+border-radius:15px;
+box-shadow:0 0 25px #0088ff33;
+line-height:1.7;
 }
 
-.joinbtn:hover{
-background:#00aaff;
-box-shadow:0 0 25px #00aaff;
-transform:scale(1.1);
+.rules h3{
+color:#00aaff;
 }
+
+/* social */
 
 .socialbtn{
 display:block;
 width:300px;
-margin:20px auto;
-padding:18px;
+margin:15px auto;
+padding:16px;
 background:#0d0d0d;
 border:2px solid #00aaff;
 border-radius:10px;
@@ -166,8 +212,26 @@ transition:0.3s;
 .socialbtn:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 25px #00aaff;
-transform:scale(1.05);
+box-shadow:0 0 30px #00aaff;
+}
+
+/* join */
+
+.joinbtn{
+background:#0088ff;
+border:none;
+padding:18px 55px;
+font-size:22px;
+color:white;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.joinbtn:hover{
+background:#00aaff;
+box-shadow:0 0 35px #00aaff;
+transform:scale(1.15);
 }
 
 /* popup */
@@ -189,7 +253,7 @@ background:#0d0d0d;
 padding:35px;
 border-radius:12px;
 width:360px;
-box-shadow:0 0 35px #0088ff;
+box-shadow:0 0 40px #00aaff;
 }
 
 .close{
@@ -206,29 +270,75 @@ border-radius:8px;
 
 <script>
 
+/* page switch */
+
 function showPage(id){
-
 let pages=document.querySelectorAll(".page");
-
-pages.forEach(p=>{
-p.classList.remove("active");
-});
-
+pages.forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
-
 }
 
-function openProfile(name,text){
+/* profile popup */
 
+function openProfile(name,text){
 document.getElementById("popup-name").innerText=name;
 document.getElementById("popup-text").innerText=text;
-
 document.getElementById("profile-popup").style.display="flex";
-
 }
 
 function closePopup(){
 document.getElementById("profile-popup").style.display="none";
+}
+
+/* epic particle background */
+
+window.onload=function(){
+
+let canvas=document.createElement("canvas");
+document.body.appendChild(canvas);
+
+let ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<150;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00aaff";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fill();
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
 }
 
 </script>
@@ -247,101 +357,129 @@ document.getElementById("profile-popup").style.display="none";
 <nav>
 <button onclick="showPage('about')">ABOUT</button>
 <button onclick="showPage('members')">MEMBERS</button>
-<button onclick="showPage('socials')">SOCIAL MEDIA</button>
+<button onclick="showPage('rules')">RULES</button>
+<button onclick="showPage('socials')">SOCIALS</button>
 <button onclick="showPage('join')">JOIN</button>
 </nav>
 
 </header>
 
+<!-- ABOUT -->
 
 <div id="about" class="page active">
 
-<h2 class="sectiontitle">About The Clan</h2>
+<h2 class="sectiontitle">About The Branch Sprinters</h2>
 
-<div class="aboutbox">
+<div class="hero">
 
-<p>
+The Branch Sprinters (TBS) is a competitive Gorilla Tag clan focused on speed, movement mastery and teamwork.
 
-The Branch Sprinters (TBS) is a competitive Gorilla Tag clan built for players who love speed, skill and teamwork.
+Inside Gorilla Tag, the best players dominate through advanced movement, insane wall climbs and smart jukes through the forest.
 
-Inside Gorilla Tag, movement is everything. From insane wall climbs to fast branch jukes and intense chases through the forest, the best players dominate with movement and strategy.
-
-TBS trains to master these mechanics and push our members to the next level.
-
-Every weekend we host training sessions where members practice movement, routes, tagging strategies and teamwork.
-
-But TBS is more than just skill — it's a community where players can meet new friends, have fun and grow together.
-
-If you love Gorilla Tag and want to become faster, smarter and stronger, then The Branch Sprinters is the place for you.
-
-Join the team and become part of the sprint.
-
-</p>
+Our clan trains every weekend to push our members to the next level while building a strong community.
 
 </div>
 
 </div>
 
-
+<!-- MEMBERS -->
 
 <div id="members" class="page">
 
 <h2 class="sectiontitle">Main Founder</h2>
 
-<div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS. The one who created The Branch Sprinters.')">
+<div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS.')">
 <div class="rank">MAIN FOUNDER</div>
 Z3RO
 </div>
 
 <h2 class="sectiontitle">Founders</h2>
 
-<div class="card" onclick="openProfile('Inferno','One of the legendary founders of TBS. A core pillar of The Branch Sprinters.')">
+<div class="card" onclick="openProfile('Inferno','One of the legendary founders of TBS.')">
 <div class="rank">FOUNDER</div>
 Inferno
 </div>
 
-<div class="card" onclick="openProfile('Paul','One of the legendary founders of TBS. A core pillar of The Branch Sprinters.')">
+<div class="card" onclick="openProfile('Paul','One of the legendary founders of TBS.')">
 <div class="rank">FOUNDER</div>
 Paul
 </div>
 
 <h2 class="sectiontitle">Elite Members</h2>
 
-<div class="card" onclick="openProfile('WaWa','An elite member of The Branch Sprinters.')">WaWa</div>
-<div class="card" onclick="openProfile('Mason','An elite member of The Branch Sprinters.')">Mason</div>
-<div class="card" onclick="openProfile('Mitzi','An elite member of The Branch Sprinters.')">Mitzi</div>
-<div class="card" onclick="openProfile('Ninja','An elite member of The Branch Sprinters.')">Ninja</div>
-<div class="card" onclick="openProfile('Zyphor','An elite member of The Branch Sprinters.')">Zyphor</div>
-<div class="card" onclick="openProfile('Matty','An elite member of The Branch Sprinters.')">Matty</div>
-<div class="card" onclick="openProfile('Purple','An elite member of The Branch Sprinters.')">Purple</div>
+<div class="card" onclick="openProfile('WaWa','Elite member of TBS.')">WaWa</div>
+<div class="card" onclick="openProfile('Mason','Elite member of TBS.')">Mason</div>
+<div class="card" onclick="openProfile('Mitzi','Elite member of TBS.')">Mitzi</div>
+<div class="card" onclick="openProfile('Ninja','Elite member of TBS.')">Ninja</div>
+<div class="card" onclick="openProfile('Zyphor','Elite member of TBS.')">Zyphor</div>
+<div class="card" onclick="openProfile('Matty','Elite member of TBS.')">Matty</div>
+<div class="card" onclick="openProfile('Purple','Elite member of TBS.')">Purple</div>
 
 </div>
 
+<!-- RULES -->
 
+<div id="rules" class="page">
+
+<h2 class="sectiontitle">THE BRANCH SPRINTER RULES®</h2>
+
+<div class="rules">
+
+<h3>1. Respect Everyone</h3>
+No harassment, bullying, racism, sexism, or hate speech. Treat all members with respect.
+
+<h3>2. Follow Gorilla Tag Rules</h3>
+Follow official rules. No cheating, modding in public lobbies or exploiting glitches.
+
+<h3>3. Discord Behavior</h3>
+Use correct channels, no spam or NSFW content.
+
+<h3>4. Competitive Play</h3>
+Play fair during scrims and tournaments. Practice good sportsmanship.
+
+<h3>5. Staff Authority</h3>
+Respect moderators and clan leaders.
+
+<h3>6. Voice Chat Rules</h3>
+No screaming or mic spamming.
+
+<h3>7. Content & Streaming</h3>
+Ask permission before recording private scrims.
+
+<h3>8. Consequences</h3>
+Breaking rules may result in warnings, mutes, kicks or bans.
+
+<h3>9. Have Fun</h3>
+Enjoy the game, improve together and build friendships.
+
+<h3>10. Sick Leave</h3>
+If you cannot play a scrim, create a ticket in Discord.
+
+<h3>11. Other Servers/Teams</h3>
+Being in another clan counts as betrayal and may result in removal.
+
+<p style="margin-top:30px;color:#888;">Made by Z3RO from TBS</p>
+
+</div>
+
+</div>
+
+<!-- SOCIALS -->
 
 <div id="socials" class="page">
 
-<h2 class="sectiontitle">TBS Social Media</h2>
+<h2 class="sectiontitle">Social Media</h2>
 
-<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter?_r=1&_t=ZG-94iVKgl38G9" target="_blank">
-TikTok
-</a>
-
-<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">
-YouTube
-</a>
+<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter?_r=1&_t=ZG-94iVKgl38G9" target="_blank">TikTok</a>
+<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">YouTube</a>
 
 </div>
 
-
+<!-- JOIN -->
 
 <div id="join" class="page">
 
 <h2 class="sectiontitle">Join The Branch Sprinters</h2>
-
-<p>Ready to sprint with the best Gorilla Tag players?</p>
-
-<br>
 
 <a href="https://discord.gg/W6Cea4Ncfn" target="_blank">
 <button class="joinbtn">JOIN DISCORD</button>
@@ -349,19 +487,14 @@ YouTube
 
 </div>
 
-
+<!-- POPUP -->
 
 <div id="profile-popup" class="popup">
-
 <div class="popup-content">
-
 <h2 id="popup-name"></h2>
 <p id="popup-text"></p>
-
 <button class="close" onclick="closePopup()">Close</button>
-
 </div>
-
 </div>
 
 </body>
