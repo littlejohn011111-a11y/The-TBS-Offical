@@ -4,7 +4,8 @@
 <head>
 
 <title>The Branch Sprinters | TBS</title>
-<link rel="icon" type="image/png" href="TBS Profile.png">
+
+<link rel="icon" type="image/png" href="tbs-logo.png">
 
 <style>
 
@@ -17,7 +18,7 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* particle canvas */
+/* animated background */
 
 canvas{
 position:fixed;
@@ -35,38 +36,32 @@ box-shadow:0 0 60px #0088ff55;
 }
 
 .logo{
-width:260px;
+width:220px;
 filter:drop-shadow(0 0 30px #00aaff);
-animation:logoGlow 3s infinite alternate;
+transition:0.4s;
 }
 
-@keyframes logoGlow{
-from{filter:drop-shadow(0 0 15px #00aaff);}
-to{filter:drop-shadow(0 0 40px #00aaff);}
+.logo:hover{
+transform:scale(1.1) rotate(3deg);
+filter:drop-shadow(0 0 50px #00aaff);
 }
 
 h1{
-font-size:50px;
+font-size:48px;
 color:#00aaff;
-letter-spacing:5px;
+letter-spacing:4px;
 margin:10px;
-animation:glowText 2s infinite alternate;
-}
-
-@keyframes glowText{
-from{text-shadow:0 0 10px #00aaff;}
-to{text-shadow:0 0 30px #00aaff;}
+text-shadow:0 0 20px #00aaff;
 }
 
 .subtitle{
 color:#aaa;
-font-size:18px;
 }
 
-/* navigation */
+/* nav */
 
 nav{
-margin-top:30px;
+margin-top:25px;
 }
 
 nav button{
@@ -93,16 +88,10 @@ transform:scale(1.1);
 .page{
 display:none;
 padding:70px;
-animation:fade 0.5s;
 }
 
 .active{
 display:block;
-}
-
-@keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
 }
 
 .sectiontitle{
@@ -121,35 +110,6 @@ padding:40px;
 border-radius:15px;
 box-shadow:0 0 25px #0088ff33;
 line-height:1.7;
-}
-
-/* stats */
-
-.stats{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:40px;
-}
-
-.statbox{
-background:#0d0d0d;
-padding:30px;
-width:200px;
-border-radius:12px;
-box-shadow:0 0 20px #0088ff33;
-transition:0.3s;
-}
-
-.statbox:hover{
-transform:scale(1.1);
-box-shadow:0 0 35px #0088ff;
-}
-
-.statnumber{
-font-size:40px;
-color:#00aaff;
 }
 
 /* member cards */
@@ -270,15 +230,11 @@ border-radius:8px;
 
 <script>
 
-/* page switch */
-
 function showPage(id){
 let pages=document.querySelectorAll(".page");
 pages.forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
-
-/* profile popup */
 
 function openProfile(name,text){
 document.getElementById("popup-name").innerText=name;
@@ -290,7 +246,7 @@ function closePopup(){
 document.getElementById("profile-popup").style.display="none";
 }
 
-/* epic particle background */
+/* particle background */
 
 window.onload=function(){
 
@@ -304,13 +260,15 @@ canvas.height=window.innerHeight;
 
 let particles=[];
 
-for(let i=0;i<150;i++){
+for(let i=0;i<120;i++){
+
 particles.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
-});
+vx:(Math.random()-0.5)*0.4,
+vy:(Math.random()-0.5)*0.4
+})
+
 }
 
 function animate(){
@@ -331,7 +289,7 @@ p.y+=p.vy;
 if(p.x<0||p.x>canvas.width)p.vx*=-1;
 if(p.y<0||p.y>canvas.height)p.vy*=-1;
 
-});
+})
 
 requestAnimationFrame(animate);
 
@@ -349,7 +307,7 @@ animate();
 
 <header>
 
-<img src="TBS Profile.png" class="logo">
+<img src="tbs-logo.png" class="logo" alt="TBS Logo">
 
 <h1>THE BRANCH SPRINTERS</h1>
 <p class="subtitle">AKA TBS</p>
@@ -364,60 +322,47 @@ animate();
 
 </header>
 
-<!-- ABOUT -->
-
 <div id="about" class="page active">
 
 <h2 class="sectiontitle">About The Branch Sprinters</h2>
 
 <div class="hero">
-
-The Branch Sprinters (TBS) is a competitive Gorilla Tag clan focused on speed, movement mastery and teamwork.
-
-Inside Gorilla Tag, the best players dominate through advanced movement, insane wall climbs and smart jukes through the forest.
-
-Our clan trains every weekend to push our members to the next level while building a strong community.
-
+The Branch Sprinters (TBS) is a competitive clan built for speed, movement mastery and teamwork.
+We train together, compete together and improve our Gorilla Tag skills every week.
 </div>
 
 </div>
-
-<!-- MEMBERS -->
 
 <div id="members" class="page">
 
-<h2 class="sectiontitle">Main Founder</h2>
+<h2 class="sectiontitle">Founder</h2>
 
 <div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS.')">
-<div class="rank">MAIN FOUNDER</div>
+<div class="rank">FOUNDER</div>
 Z3RO
 </div>
 
-<h2 class="sectiontitle">Founders</h2>
+<h2 class="sectiontitle">Other Founders</h2>
 
-<div class="card" onclick="openProfile('Inferno','One of the legendary founders of TBS.')">
-<div class="rank">FOUNDER</div>
+<div class="card" onclick="openProfile('Inferno','The Other 2 Founders, The Best ones on Earth!')">
 Inferno
 </div>
 
-<div class="card" onclick="openProfile('Paul','One of the legendary founders of TBS.')">
-<div class="rank">FOUNDER</div>
+<div class="card" onclick="openProfile('Paul','The Other 2 Founders, The Best ones on Earth!')">
 Paul
 </div>
 
-<h2 class="sectiontitle">Elite Members</h2>
+<h2 class="sectiontitle">Members</h2>
 
-<div class="card" onclick="openProfile('WaWa','Elite member of TBS.')">WaWa</div>
-<div class="card" onclick="openProfile('Mason','Elite member of TBS.')">Mason</div>
-<div class="card" onclick="openProfile('Mitzi','Elite member of TBS.')">Mitzi</div>
-<div class="card" onclick="openProfile('Ninja','Elite member of TBS.')">Ninja</div>
-<div class="card" onclick="openProfile('Zyphor','Elite member of TBS.')">Zyphor</div>
-<div class="card" onclick="openProfile('Matty','Elite member of TBS.')">Matty</div>
-<div class="card" onclick="openProfile('Purple','Elite member of TBS.')">Purple</div>
+<div class="card" onclick="openProfile('WaWa','The Best members on Earth!')">WaWa</div>
+<div class="card" onclick="openProfile('Mason','The Best members on Earth!')">Mason</div>
+<div class="card" onclick="openProfile('Mitzi','The Best members on Earth!')">Mitzi</div>
+<div class="card" onclick="openProfile('Ninja','The Best members on Earth!')">Ninja</div>
+<div class="card" onclick="openProfile('Zyphor','The Best members on Earth!')">Zyphor</div>
+<div class="card" onclick="openProfile('Matty','The Best members on Earth!')">Matty</div>
+<div class="card" onclick="openProfile('Purple','The Best members on Earth!')">Purple</div>
 
 </div>
-
-<!-- RULES -->
 
 <div id="rules" class="page">
 
@@ -426,16 +371,16 @@ Paul
 <div class="rules">
 
 <h3>1. Respect Everyone</h3>
-No harassment, bullying, racism, sexism, or hate speech. Treat all members with respect.
+No harassment, bullying, racism, sexism or toxic behavior.
 
 <h3>2. Follow Gorilla Tag Rules</h3>
-Follow official rules. No cheating, modding in public lobbies or exploiting glitches.
+No cheating, modding or exploiting glitches.
 
 <h3>3. Discord Behavior</h3>
-Use correct channels, no spam or NSFW content.
+No spam, excessive caps or NSFW content.
 
 <h3>4. Competitive Play</h3>
-Play fair during scrims and tournaments. Practice good sportsmanship.
+Play fair during scrims and tournaments.
 
 <h3>5. Staff Authority</h3>
 Respect moderators and clan leaders.
@@ -444,27 +389,25 @@ Respect moderators and clan leaders.
 No screaming or mic spamming.
 
 <h3>7. Content & Streaming</h3>
-Ask permission before recording private scrims.
+Represent the clan positively.
 
 <h3>8. Consequences</h3>
 Breaking rules may result in warnings, mutes, kicks or bans.
 
 <h3>9. Have Fun</h3>
-Enjoy the game, improve together and build friendships.
+Improve together and enjoy the game.
 
 <h3>10. Sick Leave</h3>
-If you cannot play a scrim, create a ticket in Discord.
+Create a ticket if you cannot attend a scrim.
 
-<h3>11. Other Servers/Teams</h3>
-Being in another clan counts as betrayal and may result in removal.
+<h3>11 Other Servers/Teams</h3>
+Being in another clan may result in removal.
 
 <p style="margin-top:30px;color:#888;">Made by Z3RO from TBS</p>
 
 </div>
 
 </div>
-
-<!-- SOCIALS -->
 
 <div id="socials" class="page">
 
@@ -475,19 +418,15 @@ Being in another clan counts as betrayal and may result in removal.
 
 </div>
 
-<!-- JOIN -->
-
 <div id="join" class="page">
 
-<h2 class="sectiontitle">Join The Branch Sprinters</h2>
+<h2 class="sectiontitle">Join TBS</h2>
 
 <a href="https://discord.gg/W6Cea4Ncfn" target="_blank">
 <button class="joinbtn">JOIN DISCORD</button>
 </a>
 
 </div>
-
-<!-- POPUP -->
 
 <div id="profile-popup" class="popup">
 <div class="popup-content">
