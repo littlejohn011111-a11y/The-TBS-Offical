@@ -1,23 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 
 <head>
 
 <title>The Branch Sprinters | TBS</title>
-<link rel="icon" type="image/png" href="TBS Profile.png">
+<link rel="icon" type="image/png" href="./TBS Profile.png">
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#010101;
 color:white;
 text-align:center;
 overflow-x:hidden;
+
+background:linear-gradient(-45deg,#000000,#00111f,#000000,#00111f);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
 }
 
-/* particle canvas */
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
 
 canvas{
 position:fixed;
@@ -25,8 +32,6 @@ top:0;
 left:0;
 z-index:-1;
 }
-
-/* header */
 
 header{
 padding:60px;
@@ -37,12 +42,13 @@ box-shadow:0 0 60px #0088ff55;
 .logo{
 width:260px;
 filter:drop-shadow(0 0 30px #00aaff);
-animation:logoGlow 3s infinite alternate;
+animation:logoFloat 4s ease-in-out infinite;
 }
 
-@keyframes logoGlow{
-from{filter:drop-shadow(0 0 15px #00aaff);}
-to{filter:drop-shadow(0 0 40px #00aaff);}
+@keyframes logoFloat{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
 }
 
 h1{
@@ -50,20 +56,13 @@ font-size:50px;
 color:#00aaff;
 letter-spacing:5px;
 margin:10px;
-animation:glowText 2s infinite alternate;
-}
-
-@keyframes glowText{
-from{text-shadow:0 0 10px #00aaff;}
-to{text-shadow:0 0 30px #00aaff;}
+text-shadow:0 0 30px #00aaff;
 }
 
 .subtitle{
 color:#aaa;
 font-size:18px;
 }
-
-/* navigation */
 
 nav{
 margin-top:30px;
@@ -84,16 +83,14 @@ transition:0.3s;
 nav button:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 25px #00aaff;
-transform:scale(1.1);
+box-shadow:0 0 30px #00aaff;
+transform:scale(1.12);
 }
-
-/* pages */
 
 .page{
 display:none;
 padding:70px;
-animation:fade 0.5s;
+animation:fade 0.6s;
 }
 
 .active{
@@ -101,8 +98,8 @@ display:block;
 }
 
 @keyframes fade{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
 .sectiontitle{
@@ -110,8 +107,6 @@ font-size:36px;
 color:#00aaff;
 margin-bottom:30px;
 }
-
-/* hero */
 
 .hero{
 max-width:800px;
@@ -122,37 +117,6 @@ border-radius:15px;
 box-shadow:0 0 25px #0088ff33;
 line-height:1.7;
 }
-
-/* stats */
-
-.stats{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:40px;
-}
-
-.statbox{
-background:#0d0d0d;
-padding:30px;
-width:200px;
-border-radius:12px;
-box-shadow:0 0 20px #0088ff33;
-transition:0.3s;
-}
-
-.statbox:hover{
-transform:scale(1.1);
-box-shadow:0 0 35px #0088ff;
-}
-
-.statnumber{
-font-size:40px;
-color:#00aaff;
-}
-
-/* member cards */
 
 .card{
 background:#0d0d0d;
@@ -167,7 +131,7 @@ cursor:pointer;
 }
 
 .card:hover{
-transform:scale(1.1);
+transform:scale(1.12);
 box-shadow:0 0 40px #00aaff;
 }
 
@@ -175,8 +139,6 @@ box-shadow:0 0 40px #00aaff;
 color:#00aaff;
 font-size:14px;
 }
-
-/* rules */
 
 .rules{
 max-width:900px;
@@ -192,8 +154,6 @@ line-height:1.7;
 .rules h3{
 color:#00aaff;
 }
-
-/* social */
 
 .socialbtn{
 display:block;
@@ -215,8 +175,6 @@ color:black;
 box-shadow:0 0 30px #00aaff;
 }
 
-/* join */
-
 .joinbtn{
 background:#0088ff;
 border:none;
@@ -234,43 +192,220 @@ box-shadow:0 0 35px #00aaff;
 transform:scale(1.15);
 }
 
-/* popup */
-
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.popup-content{
-background:#0d0d0d;
-padding:35px;
-border-radius:12px;
-width:360px;
-box-shadow:0 0 40px #00aaff;
-}
-
-.close{
-margin-top:20px;
-padding:12px 25px;
-background:#0088ff;
-border:none;
-color:white;
-cursor:pointer;
-border-radius:8px;
-}
-
 </style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="./TBS Profile.png" class="logo">
+
+<h1>THE BRANCH SPRINTERS</h1>
+<p class="subtitle">AKA TBS</p>
+
+<nav>
+<button onclick="showPage('about')">ABOUT</button>
+<button onclick="showPage('members')">MEMBERS</button>
+<button onclick="showPage('rules')">RULES</button>
+<button onclick="showPage('socials')">SOCIALS</button>
+<button onclick="showPage('join')">JOIN</button>
+</nav>
+
+</header>
+
+<!-- ABOUT -->
+
+<div id="about" class="page active">
+
+<h2 class="sectiontitle">About The Branch Sprinters</h2>
+
+<div class="hero">
+
+The Branch Sprinters (TBS) is a competitive Gorilla Tag clan focused on speed, movement mastery and teamwork.
+
+Inside Gorilla Tag, the best players dominate through advanced movement, insane wall climbs and smart jukes through the forest.
+
+Our clan trains together, improves together, and builds one of the strongest Gorilla Tag communities.
+
+</div>
+
+</div>
+
+<!-- MEMBERS -->
+
+<div id="members" class="page">
+
+<h2 class="sectiontitle">Main Founder</h2>
+
+<div class="card" onclick="showProfile('Z3RO','Z3RO — The Original Founder of TBS.')">
+<div class="rank">MAIN FOUNDER</div>
+Z3RO
+</div>
+
+<h2 class="sectiontitle">Founders</h2>
+
+<div class="card" onclick="showProfile('Inferno','Inferno — One of the 2 Founders, The Best ones on Earth!')">
+<div class="rank">FOUNDER</div>
+Inferno
+</div>
+
+<div class="card" onclick="showProfile('Paul','Paul — One of the 2 Founders, The Best ones on Earth!')">
+<div class="rank">FOUNDER</div>
+Paul
+</div>
+
+<h2 class="sectiontitle">Clan Members</h2>
+
+<div class="card" onclick="showProfile('WaWa','WaWa — Pro Member of The Branch Sprinters. The Best members on Earth!')">
+<div class="rank">PRO MEMBER</div>
+WaWa
+</div>
+
+<div class="card" onclick="showProfile('Mason','Mason — Better Member of The Branch Sprinters. The Best members on Earth!')">
+<div class="rank">BETTER MEMBER</div>
+Mason
+</div>
+
+<div class="card" onclick="showProfile('Mitzti','Mitzti — Pro Member of The Branch Sprinters. The Best members on Earth!')">
+<div class="rank">PRO MEMBER</div>
+Mitzti
+</div>
+
+<div class="card" onclick="showProfile('Ninja','Ninja — Pro Member of The Branch Sprinters. The Best members on Earth!')">
+<div class="rank">PRO MEMBER</div>
+Ninja
+</div>
+
+<div class="card" onclick="showProfile('Zyphor','Zyphor — Better Member of The Branch Sprinters. The Best members on Earth!')">
+<div class="rank">BETTER MEMBER</div>
+Zyphor
+</div>
+
+<div class="card" onclick="showProfile('Matty','Matty — Pro Member and Admin of The Branch Sprinters.')">
+<div class="rank">PRO MEMBER • ADMIN</div>
+Matty
+</div>
+
+<div class="card" onclick="showProfile('J4J','J4J — Average Member of The Branch Sprinters.')">
+<div class="rank">AVERAGE MEMBER</div>
+J4J
+</div>
+
+</div>
+
+<!-- PROFILE -->
+
+<div id="profile" class="page">
+
+<h2 class="sectiontitle" id="profile-name"></h2>
+
+<div class="hero">
+
+<p id="profile-text"></p>
+
+<br>
+
+<button class="joinbtn" onclick="showPage('members')">Back to Members</button>
+
+</div>
+
+</div>
+
+<!-- RULES -->
+
+<div id="rules" class="page">
+
+<h2 class="sectiontitle">The Branch Sprinters Rules®</h2>
+
+<div class="rules">
+
+<h3>1. Respect Everyone</h3>
+<p><strong>No harassment, bullying, racism, sexism, or hate speech.</strong></p>
+<p><strong>No toxic behavior in-game or in voice chat.</strong></p>
+<p><strong>Treat all members with respect, regardless of skill level.</strong></p>
+
+<h3>2. Follow Gorilla Tag Rules</h3>
+<p><strong>Follow the official rules of Gorilla Tag.</strong></p>
+<p><strong>No cheating, modding in public lobbies, or exploiting glitches.</strong></p>
+<p><strong>No ban evasion.</strong></p>
+
+<h3>3. Discord Behavior</h3>
+<p><strong>Keep chats in the correct channels.</strong></p>
+<p><strong>No spam, excessive caps, or mic spamming.</strong></p>
+<p><strong>No NSFW content.</strong></p>
+
+<h3>4. Competitive Play</h3>
+<p><strong>Play fair during scrims and tournaments.</strong></p>
+<p><strong>No stream sniping.</strong></p>
+<p><strong>Listen to team leaders during matches.</strong></p>
+<p><strong>Practice good sportsmanship | win or lose.</strong></p>
+<p><strong>Play the Scrim, when you didn't create a Ticket in Sick Leave!</strong></p>
+
+<h3>5. Staff Authority</h3>
+<p><strong>Respect moderators and clan leaders.</strong></p>
+<p><strong>If a staff member gives a warning, take it seriously.</strong></p>
+<p><strong>Do not argue publicly — use tickets or DMs for issues.</strong></p>
+
+<h3>6. Voice Chat Rules</h3>
+<p><strong>No screaming or earrape.</strong></p>
+<p><strong>Use push-to-talk if you have background noise.</strong></p>
+<p><strong>Don’t talk over others constantly.</strong></p>
+
+<h3>7. Content & Streaming</h3>
+<p><strong>Ask permission before recording private scrims.</strong></p>
+<p><strong>Represent the clan positively in videos and streams.</strong></p>
+
+<h3>8. Consequences</h3>
+<p><strong>Breaking rules may result in:</strong></p>
+<ul>
+<li>Warning</li>
+<li>Temporary mute</li>
+<li>Kick from clan</li>
+<li>Permanent ban</li>
+</ul>
+
+<h3>9. Have Fun!</h3>
+<p><strong>We’re here to enjoy the game, improve together, and build friendships. Keep it positive and competitive in a healthy way.</strong></p>
+
+<h3>10. Sick Leave</h3>
+<p><strong>If you are not able to play a Scrim, please create a Ticket in <a href="https://discord.com/channels/1474831259397001390/1478449775933133002" target="_blank">Sick Leave</a>.</strong></p>
+
+<h3>11. Other Servers/Teams</h3>
+<p><strong>If you're on another Discord server or in another team, that counts as betraying our clan. If you're in another clan and we find out, you'll be kicked from the team.</strong></p>
+
+<p><em>Made by Z3RO from TBS</em></p>
+
+</div>
+</div>
+
+<!-- SOCIALS -->
+
+<div id="socials" class="page">
+
+<h2 class="sectiontitle">Social Media</h2>
+
+<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter?_r=1&_t=ZG-94iVKgl38G9" target="_blank">TikTok</a>
+<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">YouTube</a>
+
+</div>
+
+<!-- JOIN -->
+
+<div id="join" class="page">
+
+<h2 class="sectiontitle">Join The Branch Sprinters</h2>
+
+<a href="https://discord.gg/W6Cea4Ncfn" target="_blank">
+<button class="joinbtn">JOIN DISCORD</button>
+</a>
+
+</div>
 
 <script>
 
-/* page switch */
+document.addEventListener("DOMContentLoaded", function(){
 
 function showPage(id){
 let pages=document.querySelectorAll(".page");
@@ -278,21 +413,14 @@ pages.forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
 
-/* profile popup */
-
-function openProfile(name,text){
-document.getElementById("popup-name").innerText=name;
-document.getElementById("popup-text").innerText=text;
-document.getElementById("profile-popup").style.display="flex";
+function showProfile(name,text){
+showPage("profile")
+document.getElementById("profile-name").innerText=name
+document.getElementById("profile-text").innerText=text
 }
 
-function closePopup(){
-document.getElementById("profile-popup").style.display="none";
-}
-
-/* epic particle background */
-
-window.onload=function(){
+window.showPage = showPage;
+window.showProfile = showProfile;
 
 let canvas=document.createElement("canvas");
 document.body.appendChild(canvas);
@@ -304,12 +432,12 @@ canvas.height=window.innerHeight;
 
 let particles=[];
 
-for(let i=0;i<150;i++){
+for(let i=0;i<200;i++){
 particles.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
+vx:(Math.random()-0.5)*0.6,
+vy:(Math.random()-0.5)*0.6
 });
 }
 
@@ -339,163 +467,9 @@ requestAnimationFrame(animate);
 
 animate();
 
-}
+});
 
 </script>
-
-</head>
-
-<body>
-
-<header>
-
-<img src="TBS Profile.png" class="logo">
-
-<h1>THE BRANCH SPRINTERS</h1>
-<p class="subtitle">AKA TBS</p>
-
-<nav>
-<button onclick="showPage('about')">ABOUT</button>
-<button onclick="showPage('members')">MEMBERS</button>
-<button onclick="showPage('rules')">RULES</button>
-<button onclick="showPage('socials')">SOCIALS</button>
-<button onclick="showPage('join')">JOIN</button>
-</nav>
-
-</header>
-
-<!-- ABOUT -->
-
-<div id="about" class="page active">
-
-<h2 class="sectiontitle">About The Branch Sprinters</h2>
-
-<div class="hero">
-
-The Branch Sprinters (TBS) is a competitive Gorilla Tag clan focused on speed, movement mastery and teamwork.
-
-Inside Gorilla Tag, the best players dominate through advanced movement, insane wall climbs and smart jukes through the forest.
-
-Our clan trains every weekend to push our members to the next level while building a strong community.
-
-</div>
-
-</div>
-
-<!-- MEMBERS -->
-
-<div id="members" class="page">
-
-<h2 class="sectiontitle">Main Founder</h2>
-
-<div class="card" onclick="openProfile('Z3RO','The Original Founder of TBS.')">
-<div class="rank">MAIN FOUNDER</div>
-Z3RO
-</div>
-
-<h2 class="sectiontitle">Founders</h2>
-
-<div class="card" onclick="openProfile('Inferno','One of the legendary founders of TBS.')">
-<div class="rank">FOUNDER</div>
-Inferno
-</div>
-
-<div class="card" onclick="openProfile('Paul','One of the legendary founders of TBS.')">
-<div class="rank">FOUNDER</div>
-Paul
-</div>
-
-<h2 class="sectiontitle">Elite Members</h2>
-
-<div class="card" onclick="openProfile('WaWa','Elite member of TBS.')">WaWa</div>
-<div class="card" onclick="openProfile('Mason','Elite member of TBS.')">Mason</div>
-<div class="card" onclick="openProfile('Mitzi','Elite member of TBS.')">Mitzi</div>
-<div class="card" onclick="openProfile('Ninja','Elite member of TBS.')">Ninja</div>
-<div class="card" onclick="openProfile('Zyphor','Elite member of TBS.')">Zyphor</div>
-<div class="card" onclick="openProfile('Matty','Elite member of TBS.')">Matty</div>
-<div class="card" onclick="openProfile('Purple','Elite member of TBS.')">Purple</div>
-
-</div>
-
-<!-- RULES -->
-
-<div id="rules" class="page">
-
-<h2 class="sectiontitle">THE BRANCH SPRINTER RULES®</h2>
-
-<div class="rules">
-
-<h3>1. Respect Everyone</h3>
-No harassment, bullying, racism, sexism, or hate speech. Treat all members with respect.
-
-<h3>2. Follow Gorilla Tag Rules</h3>
-Follow official rules. No cheating, modding in public lobbies or exploiting glitches.
-
-<h3>3. Discord Behavior</h3>
-Use correct channels, no spam or NSFW content.
-
-<h3>4. Competitive Play</h3>
-Play fair during scrims and tournaments. Practice good sportsmanship.
-
-<h3>5. Staff Authority</h3>
-Respect moderators and clan leaders.
-
-<h3>6. Voice Chat Rules</h3>
-No screaming or mic spamming.
-
-<h3>7. Content & Streaming</h3>
-Ask permission before recording private scrims.
-
-<h3>8. Consequences</h3>
-Breaking rules may result in warnings, mutes, kicks or bans.
-
-<h3>9. Have Fun</h3>
-Enjoy the game, improve together and build friendships.
-
-<h3>10. Sick Leave</h3>
-If you cannot play a scrim, create a ticket in Discord.
-
-<h3>11. Other Servers/Teams</h3>
-Being in another clan counts as betrayal and may result in removal.
-
-<p style="margin-top:30px;color:#888;">Made by Z3RO from TBS</p>
-
-</div>
-
-</div>
-
-<!-- SOCIALS -->
-
-<div id="socials" class="page">
-
-<h2 class="sectiontitle">Social Media</h2>
-
-<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter?_r=1&_t=ZG-94iVKgl38G9" target="_blank">TikTok</a>
-<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">YouTube</a>
-
-</div>
-
-<!-- JOIN -->
-
-<div id="join" class="page">
-
-<h2 class="sectiontitle">Join The Branch Sprinters</h2>
-
-<a href="https://discord.gg/W6Cea4Ncfn" target="_blank">
-<button class="joinbtn">JOIN DISCORD</button>
-</a>
-
-</div>
-
-<!-- POPUP -->
-
-<div id="profile-popup" class="popup">
-<div class="popup-content">
-<h2 id="popup-name"></h2>
-<p id="popup-text"></p>
-<button class="close" onclick="closePopup()">Close</button>
-</div>
-</div>
 
 </body>
 </html>
