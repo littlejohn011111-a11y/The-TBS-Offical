@@ -1,31 +1,23 @@
-```html
 <!DOCTYPE html>
 <html>
 
 <head>
-
 <title>The Branch Sprinters | TBS</title>
 <link rel="icon" type="image/png" href="./TBS Profile.png">
 
 <style>
+*{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Segoe UI,Arial;
+background:#06080f;
 color:white;
 text-align:center;
 overflow-x:hidden;
-background:linear-gradient(-45deg,#000000,#00111f,#000000,#00111f);
-background-size:400% 400%;
-animation:bgMove 15s ease infinite;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
+/* PARTICLES */
 canvas{
 position:fixed;
 top:0;
@@ -33,218 +25,212 @@ left:0;
 z-index:-1;
 }
 
+/* HEADER */
 header{
-padding:60px;
-background:#050505;
-box-shadow:0 0 60px #0088ff55;
+padding:60px 20px;
+background:rgba(15,20,35,0.8);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #00aaff33;
 }
 
 .logo{
-width:260px;
-filter:drop-shadow(0 0 30px #00aaff);
-animation:logoFloat 4s ease-in-out infinite;
+width:170px;
+filter:drop-shadow(0 0 25px #00aaff);
+animation:float 5s ease-in-out infinite;
 }
 
-@keyframes logoFloat{
+@keyframes float{
 0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+50%{transform:translateY(-12px)}
 100%{transform:translateY(0)}
 }
 
 h1{
-font-size:50px;
+font-size:46px;
+margin:10px 0;
 color:#00aaff;
-letter-spacing:5px;
-margin:10px;
-text-shadow:0 0 30px #00aaff;
+text-shadow:0 0 20px #00aaff;
 }
 
 .subtitle{
-color:#aaa;
-font-size:18px;
+color:#9aa6c0;
 }
 
-nav{
-margin-top:30px;
-}
+/* NAV */
+nav{margin-top:25px}
 
 nav button{
-background:transparent;
-border:2px solid #00aaff;
+background:rgba(0,170,255,0.1);
+border:1px solid #00aaff;
 color:#00aaff;
-padding:12px 30px;
-margin:10px;
-font-size:18px;
+padding:12px 25px;
+margin:5px;
+border-radius:8px;
 cursor:pointer;
-border-radius:10px;
-transition:0.3s;
+transition:0.25s;
 }
 
 nav button:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 30px #00aaff;
-transform:scale(1.12);
+box-shadow:0 0 20px #00aaff;
 }
 
+/* PAGES */
 .page{
 display:none;
-padding:70px;
-animation:fade 0.6s;
+padding:70px 20px;
+animation:fade 0.4s;
 }
 
-.active{
-display:block;
-}
+.active{display:block}
 
 @keyframes fade{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1}
 }
 
 .sectiontitle{
-font-size:36px;
+font-size:34px;
 color:#00aaff;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
+/* HERO */
 .hero{
-max-width:800px;
+max-width:850px;
 margin:auto;
-background:#0b0b0b;
-padding:40px;
-border-radius:15px;
-box-shadow:0 0 25px #0088ff33;
+background:rgba(20,25,40,0.8);
+padding:35px;
+border-radius:12px;
+border:1px solid #00aaff33;
 line-height:1.7;
 }
 
+/* MEMBER GRID */
+.membersection{
+max-width:950px;
+margin:auto;
+margin-bottom:50px;
+}
+
+.membersection h3{
+font-size:24px;
+color:#00aaff;
+margin-bottom:20px;
+}
+
+.membergrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+/* Cards */
 .card{
-background:#0d0d0d;
-margin:15px auto;
-padding:22px;
-width:340px;
+background:rgba(20,25,40,0.8);
+padding:25px;
 border-radius:12px;
-border:1px solid #0088ff33;
-box-shadow:0 0 15px #0088ff33;
-transition:0.3s;
+border:1px solid #00aaff33;
 cursor:pointer;
+transition:0.25s;
 }
 
 .card:hover{
-transform:scale(1.12);
-box-shadow:0 0 40px #00aaff;
+transform:translateY(-5px) scale(1.04);
+box-shadow:0 0 25px #00aaff55;
 }
 
 .rank{
 color:#00aaff;
-font-size:14px;
+font-size:13px;
+margin-bottom:6px;
 }
 
+/* RULES */
 .rules{
 max-width:900px;
 margin:auto;
 text-align:left;
-background:#0b0b0b;
-padding:40px;
-border-radius:15px;
-box-shadow:0 0 25px #0088ff33;
-line-height:1.7;
+background:rgba(20,25,40,0.8);
+padding:35px;
+border-radius:12px;
+border:1px solid #00aaff33;
 }
 
 .rules h3{
 color:#00aaff;
-transition:0.3s;
-cursor:pointer;
+margin-top:25px;
+transition:0.2s;
 }
 
 .rules h3:hover{
-color:white;
+transform:translateX(6px);
 text-shadow:0 0 10px #00aaff;
-transform:translateX(8px);
 }
 
-.rules p{
+/* BUTTON */
+.joinbtn{
+background:#00aaff;
+border:none;
+padding:16px 45px;
+font-size:20px;
+border-radius:10px;
+cursor:pointer;
 transition:0.25s;
 }
 
-.rules p:hover{
-color:#00aaff;
-transform:translateX(5px);
+.joinbtn:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #00aaff;
 }
 
+/* SOCIAL */
 .socialbtn{
 display:block;
-width:300px;
-margin:15px auto;
-padding:16px;
-background:#0d0d0d;
-border:2px solid #00aaff;
-border-radius:10px;
+width:260px;
+margin:14px auto;
+padding:14px;
+border-radius:8px;
+border:1px solid #00aaff;
 color:#00aaff;
-font-size:20px;
 text-decoration:none;
-transition:0.3s;
+font-size:16px;
+}
+
+.socialbtn img{
+width:20px;
+vertical-align:middle;
+margin-right:10px;
 }
 
 .socialbtn:hover{
 background:#00aaff;
 color:black;
-box-shadow:0 0 30px #00aaff;
-}
-
-.joinbtn{
-background:#0088ff;
-border:none;
-padding:18px 55px;
-font-size:22px;
-color:white;
-border-radius:12px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.joinbtn:hover{
-background:#00aaff;
-box-shadow:0 0 35px #00aaff;
-transform:scale(1.15);
 }
 
 /* IMPRESSUM */
-
 .impressum-btn{
 position:fixed;
-bottom:8px;
-left:8px;
+bottom:10px;
+left:10px;
 font-size:13px;
-color:#777;
+color:#7a8199;
 cursor:pointer;
-}
-
-.impressum-btn:hover{
-color:#aaa;
 }
 
 .impressum-box{
 position:fixed;
-bottom:30px;
+bottom:35px;
 left:10px;
-background:#0b0b0b;
+background:#11162a;
 padding:15px;
 border-radius:8px;
 font-size:12px;
-text-align:left;
-box-shadow:0 0 15px #00aaff55;
 display:none;
+border:1px solid #00aaff33;
+text-align:left;
 }
-
-.impressum-close{
-color:#00aaff;
-cursor:pointer;
-font-size:11px;
-margin-top:6px;
-display:block;
-}
-
 </style>
 
 </head>
@@ -252,9 +238,7 @@ display:block;
 <body>
 
 <header>
-
 <img src="./TBS Profile.png" class="logo">
-
 <h1>THE BRANCH SPRINTERS</h1>
 <p class="subtitle">AKA TBS</p>
 
@@ -265,159 +249,220 @@ display:block;
 <button onclick="showPage('socials')">SOCIALS</button>
 <button onclick="showPage('join')">JOIN</button>
 </nav>
-
 </header>
 
 <!-- ABOUT -->
-
 <div id="about" class="page active">
-
-<h2 class="sectiontitle">About The Branch Sprinters</h2>
-
+<h2 class="sectiontitle">About TBS</h2>
 <div class="hero">
-The Branch Sprinters (TBS) is a competitive Gorilla Tag clan focused on speed, movement mastery and teamwork.
-Inside Gorilla Tag, the best players dominate through advanced movement and insane wall climbs.
-Our clan trains together and builds one of the strongest Gorilla Tag communities.
-</div>
+The Branch Sprinters (TBS) is a competitive Gorilla Tag clan built around speed, skill, and teamwork.
+Our mission is to push the limits of Gorilla Tag movement and build one of the most respected communities in the game.
 
+<br><br>
+<b>Features:</b>
+<ul style="text-align:left; padding-left:20px;">
+<li>Almost every Weekend: Training and Scrims</li>
+<li>Competitive events and tournaments</li>
+<li>Friendly community and support for new members</li>
+</ul>
+</div>
 </div>
 
 <!-- MEMBERS -->
-
 <div id="members" class="page">
+<h2 class="sectiontitle">Clan Members</h2>
 
-<h2 class="sectiontitle">Main Founder</h2>
-
-<div class="card" onclick="showProfile('Z3RO','Z3RO — The Original Founder of TBS.')">
+<div class="membersection">
+<h3>Main Founder</h3>
+<div class="membergrid">
+<div class="card" onclick="showProfile('Z3RO', z3roText)">
 <div class="rank">MAIN FOUNDER</div>
 Z3RO
 </div>
+</div>
+</div>
 
-<h2 class="sectiontitle">Founders</h2>
-
-<div class="card" onclick="showProfile('Inferno','Inferno — One of the 2 Founders.')">
+<div class="membersection">
+<h3>Founders</h3>
+<div class="membergrid">
+<div class="card" onclick="showProfile('Inferno', infernoText)">
 <div class="rank">FOUNDER</div>
 Inferno
 </div>
-
-<div class="card" onclick="showProfile('Paul','Paul — One of the 2 Founders.')">
+<div class="card" onclick="showProfile('Paul', paulText)">
 <div class="rank">FOUNDER</div>
 Paul
+</div>
+</div>
+</div>
+
+<div class="membersection">
+<h3>Admins</h3>
+<div class="membergrid">
+<div class="card" onclick="showProfile('Matty', mattyText)">
+<div class="rank">ADMIN</div>
+Matty
+</div>
+</div>
+</div>
+
+<div class="membersection">
+<h3>Members</h3>
+<div class="membergrid">
+<div class="card" onclick="showProfile('WaWa', wawaText)">
+<div class="rank">MEMBER</div>
+WaWa
+</div>
+<div class="card" onclick="showProfile('Mason', masonText)">
+<div class="rank">MEMBER</div>
+Mason
+</div>
+<div class="card" onclick="showProfile('Ninja', ninjaText)">
+<div class="rank">MEMBER</div>
+Ninja
+</div>
+<div class="card" onclick="showProfile('Mitzti', mitztiText)">
+<div class="rank">MEMBER</div>
+Mitzti
+</div>
+<div class="card" onclick="showProfile('J4J', j4jText)">
+<div class="rank">MEMBER</div>
+J4J
+</div>
+<div class="card" onclick="showProfile('Zyphor', zyphorText)">
+<div class="rank">MEMBER</div>
+Zyphor
+</div>
+<div class="card" onclick="showProfile('Nino', ninoText)">
+<div class="rank">MEMBER</div>
+Nino
+</div>
+</div>
 </div>
 
 </div>
 
 <!-- PROFILE -->
-
 <div id="profile" class="page">
-
-<h2 class="sectiontitle" id="profile-name"></h2>
-
+<h2 id="profile-name"></h2>
 <div class="hero">
 <p id="profile-text"></p>
 <br>
 <button class="joinbtn" onclick="showPage('members')">Back</button>
 </div>
-
 </div>
 
 <!-- RULES -->
-
 <div id="rules" class="page">
-
 <h2 class="sectiontitle">THE BRANCH SPRINTER RULES®</h2>
-
 <div class="rules">
-
 <h3>1. Respect Everyone</h3>
-<p><b>No harassment, bullying, racism, sexism, or hate speech.</b></p>
-<p><b>No toxic behavior in-game or in voice chat.</b></p>
-<p><b>Treat all members with respect.</b></p>
+<p>No harassment, bullying, racism, sexism, or hate speech.</p>
+<p>No toxic behavior in-game or voice chat.</p>
 
 <h3>2. Follow Gorilla Tag Rules</h3>
-<p><b>No cheating or exploiting glitches.</b></p>
-<p><b>No ban evasion.</b></p>
+<p>No cheating, modding in public lobbies or exploiting glitches.</p>
 
 <h3>3. Discord Behavior</h3>
-<p><b>No spam or NSFW content.</b></p>
+<p>No spam, excessive caps or mic spamming.</p>
+<p>No NSFW content.</p>
 
 <h3>4. Competitive Play</h3>
-<p><b>Play fair during scrims and tournaments.</b></p>
+<p>Play fair during scrims and tournaments.</p>
+<p>No stream sniping.</p>
 
 <h3>5. Staff Authority</h3>
-<p><b>Respect moderators and clan leaders.</b></p>
+<p>Respect moderators and clan leaders.</p>
 
 <h3>6. Voice Chat Rules</h3>
-<p><b>No screaming or earrape.</b></p>
+<p>No screaming or earrape.</p>
 
 <h3>7. Content & Streaming</h3>
-<p><b>Represent the clan positively.</b></p>
+<p>Represent the clan positively in videos and streams.</p>
 
 <h3>8. Consequences</h3>
-<p><b>Warning • Mute • Kick • Ban</b></p>
+<p>Warning • Temporary mute • Kick • Permanent ban</p>
 
-<h3>9. Have Fun!</h3>
-<p><b>Enjoy the game and improve together.</b></p>
+<h3>9. Have Fun</h3>
+<p>Enjoy the game and improve together.</p>
 
 <h3>10. Sick Leave</h3>
-<p><b>Create a ticket if you cannot play a scrim.</b></p>
+<p>Create a ticket if you cannot play a scrim.</p>
 
-<h3>11. Other Servers/Teams</h3>
-<p><b>Being in other clans may lead to removal.</b></p>
-
-<p><i>Made by Z3RO from TBS</i></p>
-
+<h3>11 Other Servers/Teams</h3>
+<p>Being in another clan can lead to removal.</p>
 </div>
-
 </div>
 
 <!-- SOCIALS -->
-
 <div id="socials" class="page">
-
 <h2 class="sectiontitle">Social Media</h2>
-
-<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter" target="_blank">TikTok</a>
-<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official" target="_blank">YouTube</a>
-
+<a class="socialbtn" href="https://www.tiktok.com/@thebranchsprinter">🎵 TikTok</a>
+<a class="socialbtn" href="https://www.youtube.com/@TheBranchSprinters-Official">▶️ YouTube</a>
 </div>
 
 <!-- JOIN -->
-
 <div id="join" class="page">
-
-<h2 class="sectiontitle">Join The Branch Sprinters</h2>
-
-<a href="https://discord.gg/W6Cea4Ncfn" target="_blank">
+<h2 class="sectiontitle">Join The Clan</h2>
+<a href="https://discord.gg/W6Cea4Ncfn">
 <button class="joinbtn">JOIN DISCORD</button>
 </a>
-
 </div>
 
 <!-- IMPRESSUM -->
-
 <div class="impressum-btn" onclick="toggleImpressum()">IMPRESSUM</div>
-
 <div class="impressum-box" id="impressumBox">
-
-<strong>Impressum</strong><br>
 Benno Hulsch<br>
 Ballenstedt Feldstraße 297<br>
 06493 Ballenstedt<br>
 thebranchsprinter@hotmail.com
-
-<span class="impressum-close" onclick="toggleImpressum()">close</span>
-
 </div>
 
 <script>
+/* Profile Texts */
+const z3roText=`Z3RO is the legendary creator and Main Founder of The Branch Sprinters.
+Through vision, leadership, and dedication, Z3RO built the clan from the ground up.
+Known for elite movement mechanics and strategic thinking, Z3RO represents the core
+philosophy of TBS: speed, precision, and teamwork.
+Under his leadership, the clan continues to grow and develop into one of the most
+ambitious Gorilla Tag communities.`
 
-document.addEventListener("DOMContentLoaded", function(){
+const infernoText=`Inferno is a founding member of TBS and a master of speed and agility.
+He leads by example, pushing the clan to new heights with unmatched gameplay.`
+
+const paulText=`Paul is a tactical genius of TBS, organizing scrims and strategies.
+His leadership ensures the clan always plays with precision and teamwork.`
+
+const mattyText=`Matty is a dedicated Admin of TBS, keeping the clan running smoothly.
+His guidance and support help all members achieve their best.`
+
+const wawaText=`WaWa is a fierce competitor in TBS, known for quick reflexes and clever plays.
+Always bringing energy, WaWa represents the spirit of the clan.`
+
+const masonText=`Mason is a skilled TBS member who combines speed and strategy.
+His contributions make every match a challenge for the opposition.`
+
+const ninjaText=`Ninja is stealthy and precise, a true TBS force to be reckoned with.
+His movement skills are second to none.`
+
+const mitztiText=`Mitzti is a creative and versatile member of TBS.
+Always thinking ahead, Mitzti helps the team stay one step ahead of the competition.`
+
+const j4jText=`J4J is a relentless TBS member, constantly improving and inspiring others.
+His dedication and skill make him a key player.`
+
+const zyphorText=`Zyphor is a tactical member of TBS with unmatched focus.
+Known for calm precision, he excels under pressure.`
+
+const ninoText=`Nino is an energetic TBS member with a love for competitive play.
+His speed and teamwork make him an invaluable asset.`
+
+document.addEventListener("DOMContentLoaded",function(){
 
 function showPage(id){
-let pages=document.querySelectorAll(".page");
-pages.forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
+let pages=document.querySelectorAll(".page")
+pages.forEach(p=>p.classList.remove("active"))
+document.getElementById(id).classList.add("active")
 }
 
 function showProfile(name,text){
@@ -426,17 +471,41 @@ document.getElementById("profile-name").innerText=name
 document.getElementById("profile-text").innerText=text
 }
 
-window.showPage = showPage;
-window.showProfile = showProfile;
+window.showPage=showPage
+window.showProfile=showProfile
 
 window.toggleImpressum=function(){
-let box=document.getElementById("impressumBox");
-box.style.display = box.style.display === "block" ? "none" : "block";
+let box=document.getElementById("impressumBox")
+box.style.display=box.style.display==="block"?"none":"block"
 }
 
-});
+/* PARTICLES */
+let canvas=document.createElement("canvas")
+document.body.appendChild(canvas)
+let ctx=canvas.getContext("2d")
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+let particles=[]
+for(let i=0;i<200;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})
+}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+ctx.fillStyle="#00aaff"
+particles.forEach(p=>{
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fill()
+p.x+=p.vx
+p.y+=p.vy
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+})
+requestAnimationFrame(animate)
+}
+animate()
+})
 </script>
 
 </body>
 </html>
-```
